@@ -73,7 +73,7 @@ public class Welcome {
 		String userName = input.next();
 
 		System.out.println("연락처를 입력하세요 : ");
-		int userMobile = input.nextInt();
+		int userMobile = input.nextInt();     //int  이므로 입력값이 010이면 10으로 저장된다.
 
 		// 사용자에게 입력을 받은 값을 User 객체를 이용해 생성
 		mUser = new User(userName, userMobile);
@@ -360,6 +360,17 @@ public class Welcome {
 		System.out.println("8. 종료");
 	}
 
+	/*
+	 * 01. 새 도서 정보 입력 받기 관리자 인증을 거쳐 새로운 도서 정보를 키보드로 입력할 수 있도록 menuAdminLogin() 메서드를
+	 * 수정하시오. : 도서 정보를 담고 있는 String[7] 배열을 하나 생성하시오. : 도서 정보를 추가할 것인지 물어보고 Y를 입력한
+	 * 경우라면 String[7] 배열에 인덱스 [0]번부터 설정하시오. [0]번 ISBN의 경우 날짜 클래스 Date와
+	 * SimpleDateFormat을 이용하여 도서 ID를 "ISBN" + 날짜 시간(yyMMddhhmmss)로 자동 설정될 수 있도록 하시오.
+	 * 나머지 [1]번에서 [6]번의 값은 사용자에게 nextLine()으로 입력을 받아 저장하시오. nextLine() : 키보드로 한 행 입력
+	 * 시 엔터키를 입력으로 처리하는 메서드입니다. : 도서 정보를 저장하지 않겠다고 하면 N 혹은 다른 문자열 입력 시, 관리자의 이름,
+	 * 연락처, 아이디, 비밀번호가 출력될 수 있도록 하시오. (원래 사용하던 코드 사용)
+	 */
+	
+	
 	// 9. 관리자 로그인
 	private static void menuAdminLogin() {
 		System.out.println("관리자 정보를 입력하세요.");
@@ -370,7 +381,11 @@ public class Welcome {
 
 		System.out.println("비밀번호 : ");
 		String adminPwd = input.next();
-
+		
+		//private String id = "Admin";  //Admin class 에 저장되어있음
+		//private String password = "Admin1234";
+		
+		
 		Admin admin = new Admin(mUser.getName(), mUser.getPhone());
 		if (adminId.equals(admin.getId()) && adminPwd.equals(admin.getPassword())) {
 			System.out.printf("이름 [%s] 연락처 [%d]\n관리자 아이디 [%s] 관리자 비밀번호 [%s]\n", admin.getName(), admin.getPhone(),
